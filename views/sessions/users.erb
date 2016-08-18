@@ -1,0 +1,29 @@
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Username</th>
+    <th>email</th>
+    <th>password</th>
+    <th>admin?</th>
+  </tr>
+</thead>
+
+<% User.each do |user| %>
+
+<tbody>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.password %></td>
+    <td><%= user.admin %></td>
+
+   <td><form action="/sessions/user/<%= user.id %>" method="post">
+    <input type="hidden"  name="_method" value="delete"/>
+    <input type="submit" value="delete this user"/>
+    </form></td>
+  </tr>
+</tbody>
+<% end %>
+</table>

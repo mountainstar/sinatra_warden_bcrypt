@@ -1,0 +1,48 @@
+
+<html>
+<head>
+
+
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" />
+</head>
+<body>
+<h1><a href="/users/home">Sinatra Warden Bcrypt</a></h1>
+<p>This a user authentication/registration with admin Permissions</p>
+<% if user? %>
+    <a href="/auth/logout">Log Out</a>
+    <a href="/protect/protected">protected file</a>
+        <% if admin? %>
+            <a href="/sessions/users">Users list</a>
+        <% end %>
+
+    <% else %>
+
+    <a href="/auth/login">Log In</a>
+    <a href="/registrations/signup">Register</a>
+<% end %>
+
+
+<% if flash[:success] %>
+    <div style="color:green;">
+      <%= flash[:success] %>
+    </div>
+<% end %>
+
+<% if flash[:error] %>
+    <div style="color:red;">
+      <%= flash[:error] %>
+    </div>
+<% end %>
+
+
+<section>
+  <%= yield %>
+</section>
+
+
+
+</body>
+</html>
